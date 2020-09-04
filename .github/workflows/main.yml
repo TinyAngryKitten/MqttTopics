@@ -22,9 +22,11 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 11
-      - uses: eskatos/gradle-command-action@v1
-        with:
-          arguments: build
+#      - uses: eskatos/gradle-command-action@v1
+#        with:
+#          arguments: build
+      - name: gradle build
+        run: sh gradlew build
       - name: Upload the artifacts
         uses: skx/github-action-publish-binaries@master
         env:
