@@ -23,9 +23,9 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: set version number
-      - run: |
-          echo "kotlin.code.style=official" > gradle.properties
-          echo "buildNumber=${GITHUB_RUN_NUMBER}" >> gradle.properties
+      - name: change properties file
+      - run: echo gradle.props > gradle.properties
+      -name: set version number
+      - run: echo "buildNumber=${GITHUB_RUN_NUMBER}" >> gradle.properties
       - name: gradle build and publish
         run: sh gradlew build publish --no-daemon

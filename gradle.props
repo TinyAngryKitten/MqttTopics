@@ -1,0 +1,2 @@
+//This file will replace gradle properties on publish
+kotlin.code.style=official
