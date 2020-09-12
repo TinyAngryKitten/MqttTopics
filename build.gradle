@@ -44,7 +44,7 @@ publishing {
             name = "MqttTopics"
             url = uri("https://maven.pkg.github.com/TinyAngryKitten/MqttTopics")
             credentials {
-                username = "TinyAngryKitten"
+                username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("PACKAGE_TOKEN")
             }
         }

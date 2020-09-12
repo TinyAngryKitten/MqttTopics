@@ -32,3 +32,6 @@ jobs:
 
       - name: gradle build and publish
         run: sh gradlew build publish --no-daemon --stacktrace
+        env:
+          PACKAGE_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_ACTOR: ${{env.GITHUB_ACTOR}}
