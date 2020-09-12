@@ -1,10 +1,8 @@
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.3.72'
+    id 'maven-publish'
 }
-
-group 'org.example'
-version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
@@ -26,3 +24,35 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+group = 'tiny.angry.kitten'
+version = "$buildNumber"
+
+task buildnumberplusone {
+    Properties props = new Properties()
+    File propsFile = new File("gradle.properties")
+    props.load(propsFile.newDataInputStream())
+    Integer nextbuildnum = ( ((props.getProperty('buildNumber')) as BigDecimal) + 1 )
+    props.setProperty('buildNumber', nextbuildnum.toString())
+    props.store(propsFile.newWriter(), null)
+    props.load(propsFile.newDataInputStream())
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "MqttTopics"
+            url = uri("https://maven.pkg.github.com/TinyAngryKitten/MqttTopics")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+//202464d8fae9596090a9c8c9b3dd80a63a880eee

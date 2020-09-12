@@ -21,16 +21,11 @@ jobs:
       - uses: actions/checkout@v2
       - uses: nelonoel/branch-name@v1
       - uses: actions/setup-java@v1
-        with: 
-          java-version: 1.8
-      - name: gradle build --no-daemon
-        run: sh gradlew build
-      - uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-#          automatic_release_tag: "${{env.GITHUB_RUN_ID}}" #"latest"
-          automatic_release_tag: "latest"
-          prerelease: true
-          title: "Development Build"
-          files: build/libs/*.jar
-#          releaseId: ${{env.BRANCH_NAME}}/${{env.GITHUB_RUN_ID}}
+          java-version: 1.8
+      - name: set version number
+      - run: |
+          echo "kotlin.code.style=official" > gradle.properties
+          echo "buildNumber=${GITHUB_RUN_NUMBER}" >> gradle.properties
+      - name: gradle build and publish
+        run: sh gradlew build publish --no-daemon
