@@ -44,11 +44,12 @@ publishing {
             name = "MqttTopics"
             url = uri("https://maven.pkg.github.com/TinyAngryKitten/MqttTopics")
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
-                password = project.findProperty("gpr.key") ?: System.getenv("PACKAGE_TOKEN")
+                username = "TinyAngryKitten"
+                password = System.getenv("PACKAGE_TOKEN")
             }
         }
     }
+
     publications {
         gpr(MavenPublication) {
             from(components.java)
