@@ -45,7 +45,7 @@ publishing {
             url = uri("https://maven.pkg.github.com/TinyAngryKitten/MqttTopics")
             credentials {
                 username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
-                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+                password = project.findProperty("gpr.key") ?: System.getenv("PACKAGE_TOKEN")
             }
         }
     }
@@ -55,4 +55,3 @@ publishing {
         }
     }
 }
-//202464d8fae9596090a9c8c9b3dd80a63a880eee
