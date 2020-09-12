@@ -31,4 +31,4 @@ jobs:
         run: echo "buildNumber=${GITHUB_RUN_NUMBER}" >> gradle.properties
 
       - name: gradle build and publish
-        run: sh gradlew build publish --no-daemon
+        run: sh gradlew build publish --no-daemon --stacktrace
