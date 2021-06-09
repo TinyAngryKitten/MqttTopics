@@ -31,6 +31,12 @@ enum class HarmonyHubActions {
     DirectionLeft,
     DirectionRight,
     OK,
+
+    TempCooler,
+    TempHotter,
+    NightMode,
+    ToggleSpeed,
+
     SELECT {
         override fun toString() = "OK"
     },
