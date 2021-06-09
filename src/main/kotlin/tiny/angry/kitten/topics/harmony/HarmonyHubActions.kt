@@ -32,6 +32,7 @@ enum class HarmonyHubActions {
     DirectionRight,
     OK,
 
+    //Woods Venezia AC
     TempCooler,
     TempHotter,
     NightMode,
